@@ -19,8 +19,8 @@ class ImgurGalleryTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.contentView.layer.borderUIColor = UIColor.lightGray
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+        self.contentView.layer.borderUIColor = UIColor.darkGray
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5))
     }
 
     func Configure(galleryItem : ImgurGalleryModal) {
