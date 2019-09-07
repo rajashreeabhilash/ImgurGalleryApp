@@ -26,7 +26,7 @@ Features
 		Empty search will display all the results
 	3.	Click on the Filter switch to get only the filtered results 
 		If enabled, only the results where the sum of “points”, “score” and “topic_id” adds up to an even number are shown. 
-    If disabled, all the results are shown
+    	If disabled, all the results are shown
 
 Installation
 
