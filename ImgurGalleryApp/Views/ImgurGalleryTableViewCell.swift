@@ -26,10 +26,10 @@ class ImgurGalleryTableViewCell: UITableViewCell {
     func Configure(galleryItem : ImgurGalleryModal) {
         imageTitle.text = galleryItem.imageName
         imagePostedDate.text = galleryItem.imagePostedDate
-        imagesCount.text = String(galleryItem.numberOfImages)
+        imagesCount.text = String(galleryItem.numberOfImages) + " more"
         
         //Show number of additional images in post only if there are multiple
-        if (galleryItem.numberOfImages > 1){
+        if (galleryItem.numberOfImages > 0){
             imagesCount.isHidden = false;
         } else {
             imagesCount.isHidden = true;
@@ -40,6 +40,7 @@ class ImgurGalleryTableViewCell: UITableViewCell {
     }
 }
 
+//MARK: - Extension for CALayer
 extension CALayer {
     var borderUIColor : UIColor {
         get { return UIColor(cgColor: self.borderColor!) }

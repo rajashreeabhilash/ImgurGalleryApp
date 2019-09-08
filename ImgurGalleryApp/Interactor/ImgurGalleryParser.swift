@@ -60,8 +60,11 @@ class ImgurGalleryParser {
                     }
                 }
                 
+                //Additional images count is 1 less than the total
+                let additionalImagesCount = (imagesArray.count > 0) ? (imagesArray.count - 1):0
+                
                 //Add each gallery item to ImgurGalleryList
-                imgurGalleryList.append(ImgurGalleryModal(name: titleString, date: localDate, image: imageLink, count: imagesArray.count, points: points, score: score, topic: topicId))
+                imgurGalleryList.append(ImgurGalleryModal(name: titleString, date: localDate, image: imageLink, count: additionalImagesCount, points: points, score: score, topic: topicId))
                 index += 1
             } else {
                 errorMessage += "Problem parsing gallery Images Dictionary\n"

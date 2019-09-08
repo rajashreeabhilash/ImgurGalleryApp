@@ -8,13 +8,11 @@
 
 import Foundation
 
-class ImgurGalleryService {
-    let imgurGalleryParser = ImgurGalleryParser()
-    
+class ImgurGalleryService: NSObject, URLSessionDelegate, URLSessionDataDelegate  {
     var baseUrlString = "https://api.imgur.com/3/gallery"
-    let defaultUrlSession = URLSession(configuration: .default)
     var dataTask : URLSessionDataTask?
     
+    let imgurGalleryParser = ImgurGalleryParser()
     var ImgurGalleryList : [ImgurGalleryModal] = []
     var errorMessage = ""
     
@@ -40,8 +38,11 @@ class ImgurGalleryService {
             //TODO : Client ID has to be sensitive data, store it in keychain.
             var request = URLRequest(url: url)
             request.setValue("Client-ID 1ffd23ef755faf4", forHTTPHeaderField:"Authorization")
-            
-            dataTask = defaultUrlSession.dataTask(with: request) {[weak self] data, response, error in
+            request.httpMethod = "GET"
+
+            let defaultUrlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue.main)
+
+             dataTask = defaultUrlSession.dataTask(with: request) {[weak self] data, response, error in
                 defer {
                     self?.dataTask = nil
                 }
@@ -84,5 +85,11 @@ class ImgurGalleryService {
         DispatchQueue.main.async {
             completion(filteredResult, "")
         }
+    }
+    
+
+    //MARK: - URLSessionData Delegate
+    public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Swift.Void) {
+        completionHandler(URLSession.ResponseDisposition.allow)
     }
 }

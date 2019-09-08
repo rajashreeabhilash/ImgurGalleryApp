@@ -68,6 +68,7 @@ class ImgurGalleryViewController : UIViewController {
     }
 }
 
+//MARK: - Table view datasource methods
 extension ImgurGalleryViewController : UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return imgurGalleryImagesList.count
@@ -84,6 +85,7 @@ extension ImgurGalleryViewController : UITableViewDataSource {
     }
 }
 
+//MARK: - Table view delegate methods
 extension ImgurGalleryViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -94,6 +96,7 @@ extension ImgurGalleryViewController : UITableViewDelegate {
     }
 }
 
+//MARK: - Search bar methods
 extension ImgurGalleryViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         dismissKeyBoard()
