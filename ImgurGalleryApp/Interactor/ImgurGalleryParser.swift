@@ -10,9 +10,8 @@ import Foundation
 
 class ImgurGalleryParser {
     typealias JsonDictionary = [String: Any]
-    typealias ResponseType = ([ImgurGalleryModal]?, String) -> Void
     
-    func parseResponseData(data : Data, completion : @escaping ResponseType){
+    func parseResponseData(data : Data, completion : @escaping ([ImgurGalleryModal]?, String) -> Void){
         var response: JsonDictionary?
         var errorMessage : String = ""
         var imgurGalleryList : [ImgurGalleryModal] = []
