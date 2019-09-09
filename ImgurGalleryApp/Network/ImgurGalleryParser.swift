@@ -41,7 +41,7 @@ class ImgurGalleryParser {
                 //Convert date to desired date format
                 let date = Date(timeIntervalSince1970: dateTime)
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd/mm/yyyy h:mm a"
+                dateFormatter.dateFormat = "dd/MM/yyyy h:mm a"
                 dateFormatter.timeZone = .current;
                 dateFormatter.locale = Locale.current
                 let localDate = dateFormatter.string(from: date)
