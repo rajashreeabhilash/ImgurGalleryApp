@@ -19,8 +19,17 @@ class ImgurGalleryPresenter {
     }
     
     func filterGalleryList(galleryList: [ImgurGalleryModal], completion: @escaping ResponseType){
-        imgurGalleryService.getFilteredResult(galleryList: galleryList) {results, errorMessage in
-            completion(results, errorMessage)
+        var filteredResult : [ImgurGalleryModal] = []
+        for galleryItem : ImgurGalleryModal in galleryList {
+            //Filter results where the sum of “points”, “score” and “topic_id” adds up to an even number
+            if ((galleryItem.score + galleryItem.points + galleryItem.topicId) % 2 == 0){
+                filteredResult.append(galleryItem)
+            }
+        }
+        
+        //Switch to the main queue to pass filtered result to the completion handler.
+        DispatchQueue.main.async {
+            completion(filteredResult, "")
         }
     }
 }

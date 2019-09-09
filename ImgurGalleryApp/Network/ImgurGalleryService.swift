@@ -16,9 +16,7 @@ class ImgurGalleryService: NSObject, URLSessionDelegate, URLSessionDataDelegate 
     var ImgurGalleryList : [ImgurGalleryModal] = []
     var errorMessage = ""
     
-    typealias ResponseType = ([ImgurGalleryModal]?, String) -> Void
-    
-    func getGalleryList(searchText: String, completion: @escaping ResponseType){
+    func getGalleryList(searchText: String, completion: @escaping ([ImgurGalleryModal]?, String) -> Void){
         //Cancel any task if it was running
         dataTask?.cancel()
 
@@ -71,22 +69,6 @@ class ImgurGalleryService: NSObject, URLSessionDelegate, URLSessionDataDelegate 
             dataTask?.resume()
         }
     }
-    
-    func getFilteredResult(galleryList: [ImgurGalleryModal], completion: @escaping ResponseType){
-        var filteredResult : [ImgurGalleryModal] = []
-        for galleryItem : ImgurGalleryModal in galleryList {
-            //Filter results where the sum of “points”, “score” and “topic_id” adds up to an even number
-            if ((galleryItem.score + galleryItem.points + galleryItem.topicId) % 2 == 0){
-                filteredResult.append(galleryItem)
-            }
-        }
-        
-        //Switch to the main queue to pass filtered result to the completion handler.
-        DispatchQueue.main.async {
-            completion(filteredResult, "")
-        }
-    }
-    
 
     //MARK: - URLSessionData Delegate
     public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Swift.Void) {

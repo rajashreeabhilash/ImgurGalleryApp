@@ -158,7 +158,7 @@
 				FC69CB6A231E2E1400B7BEA6 /* Models */,
 				FC69CB6B231E2E1C00B7BEA6 /* Views */,
 				FC24C9982321FACA00F5B3A1 /* Presenter */,
-				FC69CB7D231F4BC900B7BEA6 /* Interactor */,
+				FC69CB7D231F4BC900B7BEA6 /* Network */,
 				FC69CB3C231E2DA200B7BEA6 /* AppDelegate.swift */,
 				FC69CB43231E2DA400B7BEA6 /* Assets.xcassets */,
 				FC69CB45231E2DA400B7BEA6 /* LaunchScreen.storyboard */,
@@ -203,13 +203,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		FC69CB7D231F4BC900B7BEA6 /* Interactor */ = {
+		FC69CB7D231F4BC900B7BEA6 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				FC69CB7E231F629000B7BEA6 /* ImgurGalleryService.swift */,
 				FC24C99B2321FF7100F5B3A1 /* ImgurGalleryParser.swift */,
 			);
-			path = Interactor;
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
