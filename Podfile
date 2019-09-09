@@ -16,6 +16,7 @@ target 'ImgurGalleryApp' do
   target 'ImgurGalleryAppUITests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'SDWebImage', '~> 5.0'
   end
 
 end
